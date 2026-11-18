@@ -1,0 +1,172 @@
+{
+  "tag": "studio-v0.3.0",
+  "title": "RoboMaster Studio 0.3.0 · Android 手机控制台",
+  "assets": [
+    {
+      "name": "RoboMaster-Studio-API-v0.3.0-win-x64.zip",
+      "size": 12298188,
+      "sha256": "677227fa40a2ed66d2f31067dda223e0402daa555231e28586a7bf2ab0901fca",
+      "blob_parts": [
+        {
+          "size": 900000,
+          "sha256": "011c24ed0bd63d61690d55a7a422ee91bc351d44daeb17994165598867c9483d",
+          "blob_sha": "8fefbed61dbbcee9df28d5ca8a515f24a2c22644"
+        },
+        {
+          "size": 900000,
+          "sha256": "a255cf133dedbd52559c6130cffd5fdac6c5805efc2480f04de8a3ff4e278320",
+          "blob_sha": "b4fca8ec3e63c7c14b2c32c38a28eb50a1aa307f"
+        },
+        {
+          "size": 900000,
+          "sha256": "abec883b32b7ad2f92b60d99bd44f6a9c8d04b19f3ec47aba4c3ed6e56a9208e",
+          "blob_sha": "14cece597da2ed18f39f1154ea89cc66d5623d42"
+        },
+        {
+          "size": 900000,
+          "sha256": "f860582be6d4dfa605d8a0f801a64f95d9379e2e875ac7474fa857932b8274d6",
+          "blob_sha": "65942c8f9bf830f42fb7f7d89f66559d7045afec"
+        },
+        {
+          "size": 900000,
+          "sha256": "8f65d886ef067170bc8c0a22028f7075fdd771ae944eff84d00f335b7a4243f0",
+          "blob_sha": "345131729992b10ce5cdd006d4e5114af7432e21"
+        },
+        {
+          "size": 900000,
+          "sha256": "78ef1394409a0a5850b3f45d057aa44fd7c47392cb4bfeaf026d86e7edae20c9",
+          "blob_sha": "c8f02c0a7637fa2e1729e81187bf293112d322cb"
+        },
+        {
+          "size": 900000,
+          "sha256": "3facd2beab42885715fa55430bd702f6572eec46c970d58cd63b78189d9b2684",
+          "blob_sha": "d587147100b52f46e946c48a578923be5b5955c7"
+        },
+        {
+          "size": 900000,
+          "sha256": "5673812dd45570912042920ba60c8911c7168938bb495281d4267a9aa239adbe",
+          "blob_sha": "77b073c949060d7152c6c6376f6750cd8803d5c2"
+        },
+        {
+          "size": 900000,
+          "sha256": "f5740540949ea65de57efda34b2d45209aeb7082a85ed1c2d522849a721cb357",
+          "blob_sha": "14d3e2adc42abd6784b706267ed270bf36f04eca"
+        },
+        {
+          "size": 900000,
+          "sha256": "4f05087a25b862b9c67094130ac62b9875ec14dfe60660cdcb9089f418596bf0",
+          "blob_sha": "8b4e0124e636fc2a356fd26374287db88f0a2657"
+        },
+        {
+          "size": 900000,
+          "sha256": "9c67e2c081aeea79421aa96bee577cd1f222b796e3c8313d9f3045b60f11c317",
+          "blob_sha": "6ecf9e088ff24959887694d14810109e8fc2ff56"
+        },
+        {
+          "size": 900000,
+          "sha256": "8c395ecdcc155cbef9d23d737560943fd16d0dc1cb27c5decec3648da698d4c0",
+          "blob_sha": "a5f13ffb7c8261570ec8f42dadcaa452d61ca34a"
+        },
+        {
+          "size": 900000,
+          "sha256": "9d5f4ceb356b4fd926f048804bd6714d4317e81c7b4902db33cad41b5353babf",
+          "blob_sha": "b070d4358d37331d81a73b9be742c0cb0511a594"
+        },
+        {
+          "size": 598188,
+          "sha256": "70848525c206da2b8f153279a564fedc93ace31167e25e72f7aabbfd246aad22",
+          "blob_sha": "28b7dd6afdc4220e99f6b5ec8d1d225c8933ef74"
+        }
+      ]
+    },
+    {
+      "name": "RoboMaster-Studio-Codex-v0.3.0-win-x64.zip",
+      "size": 12301787,
+      "sha256": "c98aaef9d17273d511a83f3eecacde61fcf4c66c4539e64aa40623d463b34a21",
+      "blob_parts": [
+        {
+          "size": 900000,
+          "sha256": "f2469bb1b7b5bf0fa1f5f6a30102e7368b992eaf857704d44cb6ec42c0ad7eb3",
+          "blob_sha": "2a2392c645c3622ef6af497035aff9752a6aaa34"
+        },
+        {
+          "size": 900000,
+          "sha256": "e834f362d30cfb320425499c4a78e4b39211798f555beb325c32eaf18079fdb8",
+          "blob_sha": "576cbdbb39f5463a76a1ee96980a698e65bab307"
+        },
+        {
+          "size": 900000,
+          "sha256": "c52de8d0b07cd4e4d5115ba82a35b6d19de01765d7d971d0e884a7efb31d629b",
+          "blob_sha": "5c752d00505782b3f2f941e7b20e3cfa0d3f9687"
+        },
+        {
+          "size": 900000,
+          "sha256": "1f59a73e9881ece3b3046e0c40ebfb53ddd0f0af5010f552b05e7d956ac10617",
+          "blob_sha": "f51529293b915777e11d92d14db910af87a708f2"
+        },
+        {
+          "size": 900000,
+          "sha256": "40dff5932c4db1120e976d8bca5e97d6d0c5738c31c13dc0eccd7824edf8a63a",
+          "blob_sha": "94643ffd6f364c6e28e164a6485083f20737fc16"
+        },
+        {
+          "size": 900000,
+          "sha256": "983df3927029e6dbef1dba434426e9f7f631c2776bef671391569b38e1bafd8b",
+          "blob_sha": "80f06254bd8d87291d5411ccaf5a7c178889c7c3"
+        },
+        {
+          "size": 900000,
+          "sha256": "8d945d34062ca6e75445a5d04c0016be958f75154e8c4c4b7955c7888717b64d",
+          "blob_sha": "8166cde26c84e5e47b6ca74f0ee6c0f110667e3a"
+        },
+        {
+          "size": 900000,
+          "sha256": "9005e643dfdb11403735e222aeab6c02b615295ff9693fbe28400445a70c342a",
+          "blob_sha": "9a0597057c20fc633010c15481520b253b6b8f57"
+        },
+        {
+          "size": 900000,
+          "sha256": "f6082b1e7e6a04f5c29b6e1b8776f740f1cb5777a2fbc14b25e88db9978197ae",
+          "blob_sha": "1418be9afdc43c4e8c120cba1e73736f44f91d21"
+        },
+        {
+          "size": 900000,
+          "sha256": "5b2fe61ab0b554ce259e3311da34796f72aedca6e4abb331bb358ccfa519c098",
+          "blob_sha": "e1a26338a69aa8fb3118a0bee17313f275849f05"
+        },
+        {
+          "size": 900000,
+          "sha256": "d4d38105db962eb0dcb7fdaefa1071d844d25dff4f3c219a288e272a3e6b8d62",
+          "blob_sha": "ff878214777981a8b2def36a7a4f8eba5e5ef8f3"
+        },
+        {
+          "size": 900000,
+          "sha256": "2d074de1a9a33c4ce9def5d22750862c72bc1aef45eaa5ca3e168567c44e31b6",
+          "blob_sha": "7dd8ab9aa64d836208a99e9ced4fd9b8793e3571"
+        },
+        {
+          "size": 900000,
+          "sha256": "7e414fbbdc246540c4a8ee4eaa84252ed6142b351fedb9a843f0483995bb4e22",
+          "blob_sha": "00b2dd020521f0c63208cb85b75943773215399b"
+        },
+        {
+          "size": 601787,
+          "sha256": "4c69dbc03654d8080952edd91953e5da8b5a6b41aefb03e3bac320fec81fde79",
+          "blob_sha": "17d2dc6552be2c14e0d33cca7b11084bff9520ba"
+        }
+      ]
+    },
+    {
+      "name": "RoboMaster-Console-v0.3.0.apk",
+      "size": 291550,
+      "sha256": "20a2f2890c517b8fd4e122c2f7a17a0c4de058b3e94e5c905906d12256a18688",
+      "blob_parts": [
+        {
+          "size": 291550,
+          "sha256": "20a2f2890c517b8fd4e122c2f7a17a0c4de058b3e94e5c905906d12256a18688",
+          "blob_sha": "25253ec41e8202d3635e278e60363ec228daec39"
+        }
+      ]
+    }
+  ]
+}

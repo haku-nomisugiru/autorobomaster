@@ -8,7 +8,7 @@
 
 Rust · Tauri 2 · SolidWorks MCP · Codex · DeepSeek Harness
 
-[下载 API 桌面版](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-API-v0.2.0-win-x64.zip) · [下载 Codex 桌面版](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-Codex-v0.2.0-win-x64.zip) · [下载 DSH 插件](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-DSH-v0.2.0.zip) · [发行说明](https://github.com/haku-nomisugiru/autorobomaster/releases/tag/studio-v0.2.0)
+[下载 API 桌面版](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Studio-API-v0.3.0-win-x64.zip) · [下载 Codex 桌面版](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Studio-Codex-v0.3.0-win-x64.zip) · [下载安卓控制台](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Console-v0.3.0.apk) · [手机连接教学](#手机连接教学) · [下载 DSH 0.2.0 插件](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-DSH-v0.2.0.zip) · [发行说明](https://github.com/haku-nomisugiru/autorobomaster/releases/tag/studio-v0.3.0)
 
 ![墨夜主题：五阶段工作台与结构化规格](studio/docs/screenshots/themes/night-home.png)
 
@@ -28,13 +28,37 @@ Rust · Tauri 2 · SolidWorks MCP · Codex · DeepSeek Harness
 | 是否需要 Codex | 不需要安装或登录 Codex | 使用 Codex 接入时需要 | 由 DSH 中选择的模型决定 |
 | 对话与数据 | Studio 项目；便携目录旁的 `data/` | Studio 项目；便携目录旁的 `data/` | DSH 对话；插件状态按会话隔离 |
 | 外观 | 墨夜、研究白、蓝图、陶土；可选字体 | 相同的桌面主题与字体设置 | 随 DSH 当前主题切换 |
-| 下载 | [API · Windows x64 ZIP](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-API-v0.2.0-win-x64.zip) | [Codex · Windows x64 ZIP](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-Codex-v0.2.0-win-x64.zip) | [DSH 插件 ZIP](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-DSH-v0.2.0.zip) |
+| 手机配对 | 支持 Android 控制台 | 支持 Android 控制台 | 使用 DSH 自带的会话界面 |
+| 下载 | [API · Windows x64 ZIP](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Studio-API-v0.3.0-win-x64.zip) | [Codex · Windows x64 ZIP](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Studio-Codex-v0.3.0-win-x64.zip) | [DSH 插件 ZIP](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.2.0/RoboMaster-Studio-DSH-v0.2.0.zip) |
 
-**API 与 Codex 桌面包使用同一个 0.2.0 Rust 程序，只是新数据目录的默认接入方式不同。** API 版可独立使用，五阶段、模型工作区、记忆和 Skills 功能相同；已有设置会保留。配置步骤见 [API 接入说明](studio/docs/API.md)。
+**API 与 Codex 桌面包使用同一个 0.3.0 Rust 程序，只是新数据目录的默认接入方式不同。** API 版可独立使用，五阶段、模型工作区、记忆和 Skills 功能相同；已有设置会保留。配置步骤见 [API 接入说明](studio/docs/API.md)。
 
 DSH 可以直接安装此仓库地址：`https://github.com/haku-nomisugiru/autorobomaster`。安装后启用插件，在会话输入框上方点击 **ROBOMASTER / STUDIO → 展开**。之前遇到「没有声明组合包」时，可重新添加同一地址安装。
 
 需要可正常运行的 SolidWorks 和单独安装的上游 MCP，才能执行 CAD 操作。桌面版还需要 Windows 10/11 x64 与 WebView2 Runtime。
+
+## 手机连接教学
+
+准备一台运行 Studio 0.3.0 的 Windows 电脑和一部 Android 8 或更高版本的手机。电脑负责运行模型与 SolidWorks，手机用于查看同一项目、发消息和点选确认。
+
+1. **安装两端。** 电脑从上表选择 API 或 Codex 桌面包，完整解压，运行对应的启动脚本。在「设置 → 连接与模型」完成模型连接，打开要远程使用的项目。手机下载安装[安卓控制台 APK](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Console-v0.3.0.apk)。
+2. **连接私有网络。** 在电脑与手机上安装 Tailscale，用同一账号登录并开启连接。在 Windows 的 PowerShell 运行下面的命令。如果首次运行提示启用 HTTPS，打开命令给出的授权链接，完成后再次运行。复制输出中以 `https://` 开头的电脑地址。[Tailscale 下载](https://tailscale.com/download) · [Serve 官方说明](https://tailscale.com/docs/features/tailscale-serve)
+
+   ```powershell
+   tailscale serve --bg http://127.0.0.1:49731
+   ```
+
+3. **在电脑生成配对码。** 打开「设置 → 手机控制台」，把刚复制的 HTTPS 根地址填入「手机访问地址」。选择「操作当前项目」或「仅查看」，点击「生成配对码」。
+4. **手机扫码，电脑批准。** 打开手机控制台，点「扫描配对码」对准电脑屏幕，也可以点「从相册识别」。二维码两分钟内有效，只能使用一次。回到电脑的「配对设备」找到自己的手机并点「批准」。手机显示「已连接」和项目名即配对成功；只读设备显示「只读连接」。
+5. **试一次外网操作。** 电脑保持唤醒并运行 Studio。手机保持 Tailscale 连接，关闭 Wi-Fi，切换到移动数据。在「需求」页发送“请回复 OK”，确认收到回答。左右滑动内容区可切换五个阶段；模型提出选项时，点选即可继续。
+
+| 手机显示 | 如何处理 |
+| --- | --- |
+| 等待电脑批准 | 在电脑打开生成配对码的项目，在「配对设备」中点「批准」。 |
+| 已断线 · 正在重连 | 检查电脑是否唤醒、Studio 是否运行，以及两端的 Tailscale 是否在线。在电脑运行 `tailscale serve status`，核对 HTTPS 地址指向 `127.0.0.1:49731`。连接恢复后手机会核对原提交的回执。 |
+| 电脑已切换项目 | 在电脑重新打开配对时的项目，即可继续操作。 |
+
+USB 调试、设备撤销和电脑意外退出后的处理见[手机控制台使用说明](studio/docs/MOBILE.md)。[查看真机断线重连验收](studio/docs/validation/mobile-v0.3.0.md)
 
 ## 一个项目，五个阶段
 
@@ -123,6 +147,7 @@ node --test tests/dsh-service.test.mjs
 studio/
 ├─ src/                 React 界面、五阶段交互与主题
 ├─ src-tauri/src/        Rust 模型适配、工具循环、SQLite、工作区与 MCP
+├─ android/             安卓控制台、扫码和断线重连
 ├─ plugins/dsh/          DSH 原生 Host / Client 插件
 ├─ images/              机械概念插画
 ├─ scripts/             构建、打包与集成检查

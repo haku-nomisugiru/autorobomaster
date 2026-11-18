@@ -1,6 +1,6 @@
 [package]
 name = "robomaster-studio"
-version = "0.2.0"
+version = "0.3.0"
 description = "RoboMaster mechanical design workspace"
 edition = "2021"
 
@@ -12,6 +12,8 @@ crate-type = ["rlib"]
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
+axum = { version = "0.8", default-features = false, features = ["tokio", "http1", "json", "query"] }
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
 tauri = { version = "2", features = [] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

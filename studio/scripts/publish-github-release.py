@@ -62,10 +62,12 @@ def main():
         raise ValueError('Publication requires a specific main commit')
     manifest = json.loads(Path('release-manifest.json').read_text(encoding='utf-8'))
     tag = manifest['tag']
-    if tag != 'studio-v0.2.0':
-        raise ValueError('This publication workflow is scoped to Studio 0.2.0')
+    if tag not in {'studio-v0.2.0', 'studio-v0.3.0'}:
+        raise ValueError('Unexpected Studio release tag')
+    version = tag.removeprefix('studio-v')
     assets = manifest['assets']
-    names = {'RoboMaster-Studio-API-v0.2.0-win-x64.zip', 'RoboMaster-Studio-Codex-v0.2.0-win-x64.zip', 'RoboMaster-Studio-DSH-v0.2.0.zip'}
+    companion = 'RoboMaster-Console-v0.3.0.apk' if version == '0.3.0' else 'RoboMaster-Studio-DSH-v0.2.0.zip'
+    names = {f'RoboMaster-Studio-API-v{version}-win-x64.zip', f'RoboMaster-Studio-Codex-v{version}-win-x64.zip', companion}
     if len(assets) != 3 or {a['name'] for a in assets} != names:
         raise ValueError('Unexpected installation package list')
     for item in assets:
@@ -88,7 +90,7 @@ def main():
         wanted = expected_by_name[name]
         if current['size'] == wanted['size'] and current.get('digest') == 'sha256:' + wanted['sha256']:
             continue
-        if name == 'SHA256SUMS.txt' and current['size'] == 208 and current.get('digest') == previous_checksums:
+        if version == '0.2.0' and name == 'SHA256SUMS.txt' and current['size'] == 208 and current.get('digest') == previous_checksums:
             continue
         raise ValueError('Existing release asset differs; refusing to overwrite: ' + name)
     if existing and not published and existing['target_commitish'] != commit:
@@ -114,6 +116,8 @@ def main():
         with zipfile.ZipFile(item['name']) as package:
             if package.testzip():
                 raise ValueError('Corrupted ZIP')
+            if item['name'].endswith('.apk') and not {'AndroidManifest.xml', 'classes.dex'}.issubset(package.namelist()):
+                raise ValueError('Invalid Android application package')
             for name in package.namelist():
                 parts = Path(name.replace('\\', '/')).parts
                 if '..' in parts or any(p in {'data', '.local', 'node_modules', '.git'} for p in parts):
@@ -134,7 +138,7 @@ def main():
         if item['name'] in uploaded:
             current = uploaded[item['name']]
             if current['size'] != item['size'] or current.get('digest') != 'sha256:' + item['sha256']:
-                if item['name'] != 'SHA256SUMS.txt' or current.get('digest') != previous_checksums:
+                if version != '0.2.0' or item['name'] != 'SHA256SUMS.txt' or current.get('digest') != previous_checksums:
                     raise ValueError('Existing release asset differs; refusing to overwrite')
                 gh('release', 'upload', tag, item['name'], '--repo', repo, '--clobber')
         else:

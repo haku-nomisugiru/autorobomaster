@@ -207,6 +207,7 @@ export default function App() {
       const next = await call<Snapshot>("send_message", {
         text: choice ? null : text,
         choice: choice || null,
+        questionId: choice ? data.project.pending?.callId : null,
       });
       setData(next);
       setDrafts((d) => ({ ...d, [active.id]: "" }));

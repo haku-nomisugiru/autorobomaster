@@ -1,10 +1,11 @@
-name: Publish RoboMaster Studio 0.2.0
+name: Publish RoboMaster Studio 0.3.0
 
 on:
   push:
     branches: [main]
     paths:
-      - studio/distribution/studio-v0.2.0.json
+      - studio/distribution/studio-v0.3.0.json
+      - studio/docs/releases/studio-v0.3.0.md
       - studio/scripts/publish-github-release.py
       - .github/workflows/publish-studio.yml
   workflow_dispatch:
@@ -13,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-studio-v0.2.0
+  group: publish-studio-v0.3.0
   cancel-in-progress: false
 
 jobs:
@@ -32,8 +33,8 @@ jobs:
             gh api -H 'Accept: application/vnd.github.raw+json' \
               "repos/$GITHUB_REPOSITORY/contents/$1?ref=$GITHUB_SHA" > "$2"
           }
-          fetch_file studio/distribution/studio-v0.2.0.json release-manifest.json
-          fetch_file studio/docs/releases/studio-v0.2.0.md release-notes.md
+          fetch_file studio/distribution/studio-v0.3.0.json release-manifest.json
+          fetch_file studio/docs/releases/studio-v0.3.0.md release-notes.md
           fetch_file studio/scripts/publish-github-release.py publish-release.py
-      - name: Verify original ZIPs, upload attachments, then publish
+      - name: Verify original APK and ZIPs, upload attachments, then publish
         run: python3 publish-release.py

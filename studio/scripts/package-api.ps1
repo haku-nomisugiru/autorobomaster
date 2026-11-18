@@ -6,6 +6,7 @@ $name = "RoboMaster-Studio-API-v$version-win-x64"
 $packageRoot = Join-Path $studioRoot "release\$name"
 if (-not (Test-Path -LiteralPath (Join-Path $source 'RoboMasterStudio.exe'))) { throw '请先运行 package-integrations.ps1 生成对应版本的 Codex 桌面包。' }
 New-Item -ItemType Directory -Force $packageRoot | Out-Null
+Copy-Item -LiteralPath (Join-Path $studioRoot 'docs\MOBILE.md') -Destination (Join-Path $packageRoot '手机控制台.md') -Force
 foreach ($file in @('RoboMasterStudio.exe','LICENSE','THIRD_PARTY_NOTICES.md','DEPENDENCY_LICENSES.txt','SHA256SUMS.txt')) {
   Copy-Item -LiteralPath (Join-Path $source $file) -Destination $packageRoot -Force
 }
@@ -20,7 +21,7 @@ start "" "%~dp0RoboMasterStudio.exe"
 $stage = Join-Path $studioRoot ('.local\api-package-' + [guid]::NewGuid().ToString('N'))
 $stagingRoot = Join-Path $stage $name
 New-Item -ItemType Directory -Force $stagingRoot | Out-Null
-foreach ($file in @('RoboMasterStudio.exe','Start-API-Studio.cmd','使用说明.md','LICENSE','THIRD_PARTY_NOTICES.md','DEPENDENCY_LICENSES.txt','SHA256SUMS.txt')) {
+foreach ($file in @('RoboMasterStudio.exe','Start-API-Studio.cmd','使用说明.md','手机控制台.md','LICENSE','THIRD_PARTY_NOTICES.md','DEPENDENCY_LICENSES.txt','SHA256SUMS.txt')) {
   Copy-Item -LiteralPath (Join-Path $packageRoot $file) -Destination $stagingRoot
 }
 $archive = Join-Path $studioRoot "release\$name.zip"

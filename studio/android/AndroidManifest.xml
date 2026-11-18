@@ -1,0 +1,12 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="studio.robomaster.console" android:versionCode="3" android:versionName="0.3.0">
+  <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.CAMERA"/>
+  <uses-feature android:name="android.hardware.camera" android:required="false"/>
+  <application android:label="RoboMaster 控制台" android:allowBackup="false" android:theme="@android:style/Theme.Material.NoActionBar" android:networkSecurityConfig="@xml/network">
+    <activity android:name=".ConsoleActivity" android:exported="true" android:configChanges="orientation|screenSize|keyboardHidden" android:windowSoftInputMode="adjustResize">
+      <intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+    </activity>
+    <activity android:name=".ScannerActivity" android:exported="false" android:screenOrientation="portrait"/>
+  </application>
+</manifest>

@@ -1,10 +1,10 @@
-# RoboMaster Studio 0.2 — API、Codex 与 DSH
+# RoboMaster Studio — API、Codex 与 DSH
 
-三个入口都保留五阶段工作流、结构化规格、模型工作区、记忆与技能。API 与 Codex 桌面包使用同一个 0.2.0 Rust / Tauri 程序，只是新数据目录的默认接入方式不同；已有设置优先。DSH 版作为原生插件运行在 DSH 当前会话内。
+三个入口都保留五阶段工作流、结构化规格、模型工作区、记忆与技能。API 与 Codex 桌面包使用同一个 0.3.0 Rust / Tauri 程序，只是新数据目录的默认接入方式不同；已有设置优先。DSH 版作为原生插件运行在 DSH 当前会话内。
 
 ## API 桌面版
 
-1. 解压 `RoboMaster-Studio-API-v0.2.0-win-x64.zip`，运行 `Start-API-Studio.cmd`。
+1. 解压 `RoboMaster-Studio-API-v0.3.0-win-x64.zip`，运行 `Start-API-Studio.cmd`。
 2. 打开右上角设置 → 连接与模型，选择 Chat Completions 兼容或 Responses API，填写 API 地址、模型 ID 与 API Key，点击“保存并测试模型”。
 3. 配置 SolidWorks MCP，并在“模型工作区”选择模型读取与保存目录。
 
@@ -12,7 +12,7 @@ API 接入可以独立使用，不需要安装或登录 Codex。两种桌面包�
 
 ## Codex 桌面版
 
-1. 解压 `RoboMaster-Studio-Codex-v0.2.0-win-x64.zip`。
+1. 解压 `RoboMaster-Studio-Codex-v0.3.0-win-x64.zip`。
 2. 先安装并登录 Codex，再运行 `Start-Codex-Studio.cmd`。首次启动默认选择 Codex 接入。
 3. 打开右上角设置 → 连接与模型，点击“保存并测试模型”。模型 ID 留空时使用本机 Codex 默认模型；也可以填写自己账户可用的模型 ID。
 4. 如果自动查找失败，填写实际 `codex.exe` 的完整路径。不要填写桌面快捷方式或整个命令行。
@@ -93,3 +93,5 @@ cargo test --manifest-path src-tauri/Cargo.toml --lib codex::tests::live_codex_t
 ```
 
 `scripts/dsh-native-smoke.mjs` 只对明确准备的独立 DSH 测试实例运行，默认连接 `127.0.0.1:9472`。它会修改该测试会话的规格和技能，不应指向用户的工作会话。
+
+桌面版 0.3.0 的远程连接与扫码说明见随包的《手机控制台.md》。

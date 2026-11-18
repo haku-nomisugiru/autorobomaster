@@ -1,3 +1,4 @@
+param([switch]$DesktopOnly)
 $ErrorActionPreference = 'Stop'
 $studioRoot = Split-Path -Parent $PSScriptRoot
 $version = (Get-Content -LiteralPath (Join-Path $studioRoot 'package.json') -Raw | ConvertFrom-Json).version
@@ -6,6 +7,7 @@ $packageRoot = Join-Path $studioRoot "release\$name"
 $exe = Join-Path $studioRoot 'src-tauri\target\release\robomaster-studio.exe'
 if (-not (Test-Path -LiteralPath $exe)) { throw '请先运行 build.ps1。' }
 New-Item -ItemType Directory -Force $packageRoot | Out-Null
+Copy-Item -LiteralPath (Join-Path $studioRoot 'docs\MOBILE.md') -Destination (Join-Path $packageRoot '手机控制台.md') -Force
 Copy-Item -LiteralPath $exe -Destination (Join-Path $packageRoot 'RoboMasterStudio.exe') -Force
 Copy-Item -LiteralPath (Join-Path $studioRoot 'docs\INTEGRATIONS.md') -Destination (Join-Path $packageRoot '使用说明.md') -Force
 Copy-Item -LiteralPath (Join-Path $studioRoot 'THIRD_PARTY_NOTICES.md') -Destination $packageRoot -Force
@@ -25,11 +27,13 @@ $digest = (Get-FileHash -LiteralPath (Join-Path $packageRoot 'RoboMasterStudio.e
 $stage = Join-Path $studioRoot ('.local\integration-package-' + [guid]::NewGuid().ToString('N'))
 $stagingRoot = Join-Path $stage $name
 New-Item -ItemType Directory -Force $stagingRoot | Out-Null
-foreach ($file in @('RoboMasterStudio.exe','Start-Codex-Studio.cmd','使用说明.md','LICENSE','THIRD_PARTY_NOTICES.md','DEPENDENCY_LICENSES.txt','SHA256SUMS.txt')) {
+foreach ($file in @('RoboMasterStudio.exe','Start-Codex-Studio.cmd','使用说明.md','手机控制台.md','LICENSE','THIRD_PARTY_NOTICES.md','DEPENDENCY_LICENSES.txt','SHA256SUMS.txt')) {
   Copy-Item -LiteralPath (Join-Path $packageRoot $file) -Destination $stagingRoot
 }
 Compress-Archive -LiteralPath $stagingRoot -DestinationPath (Join-Path $studioRoot "release\$name.zip") -Force
-$pluginName = "RoboMaster-Studio-DSH-v$version"
+if ($DesktopOnly) { & (Join-Path $PSScriptRoot 'package-api.ps1'); return }
+$pluginVersion = (Get-Content -LiteralPath (Join-Path $studioRoot 'plugins\dsh\package.json') -Raw | ConvertFrom-Json).version
+$pluginName = "RoboMaster-Studio-DSH-v$pluginVersion"
 $pluginRoot = Join-Path $studioRoot "release\$pluginName"
 New-Item -ItemType Directory -Force $pluginRoot | Out-Null
 foreach ($file in @('package.json','index.js','service.js','mcp.js','workflow.json','client.js','cordis.patch.yml','icon.svg','README.md','locale')) {

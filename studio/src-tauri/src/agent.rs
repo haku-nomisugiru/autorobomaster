@@ -295,6 +295,7 @@ async fn run_inner(
                             }
                             match result {
                                 Ok(raw) => {
+                                    crate::mobile::record_preview(state,&p,&stage,&raw);
                                     let evidence_path = root
                                         .join("cad")
                                         .join(&p.id)

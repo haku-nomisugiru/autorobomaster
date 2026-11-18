@@ -27,8 +27,10 @@ import {
 } from "./types";
 import { RichText } from "./App";
 import { MechanicalArt } from "./MechanicalArt";
+import { MobilePanel } from "./MobilePanel";
 const sections = [
   { id: "connections", name: "连接与模型", Icon: Plug },
+  ...(native ? [{ id: "mobile", name: "手机控制台", Icon: Plug }] : []),
   { id: "workspace", name: "模型工作区", Icon: FolderOpen },
   { id: "prompts", name: "工作流提示词", Icon: MessageSquare },
   { id: "skills", name: "Skills 与记忆", Icon: BookOpen },
@@ -198,7 +200,7 @@ export function SettingsPanel({
           <div className="settings-nav-foot">
             <span className="brand-star">✳</span>
             <span>
-              RoboMaster Studio<small>LOCAL FIRST · 0.1.0</small>
+              RoboMaster Studio<small>LOCAL FIRST · 0.3.0</small>
             </span>
           </div>
           <div className="settings-art">
@@ -206,6 +208,7 @@ export function SettingsPanel({
           </div>
         </aside>
         <section className="settings-content" key={page}>
+          {page === "mobile" && <MobilePanel project={data.project.id}/>}
           {page === "connections" && (
             <>
               <div className="settings-page-heading">

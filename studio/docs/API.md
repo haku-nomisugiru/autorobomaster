@@ -1,8 +1,8 @@
-# RoboMaster Studio 0.2.0 · API 桌面版
+# RoboMaster Studio 0.3.0 · API 桌面版
 
 API 版与 Codex 版使用同一个 Rust / Tauri 程序，区别是启动入口的默认模型配置。API 版可独立连接模型服务，不需要安装或登录 Codex。
 
-1. 完整解压 `RoboMaster-Studio-API-v0.2.0-win-x64.zip`，运行 `Start-API-Studio.cmd`。
+1. 完整解压 `RoboMaster-Studio-API-v0.3.0-win-x64.zip`，运行 `Start-API-Studio.cmd`。
 2. 打开右上角「设置 → 连接与模型」，选择 **Chat Completions 兼容** 或 **Responses API**。
 3. 填入服务商的 API 基础地址、可用模型 ID 和 API Key，再点击「保存并测试模型」。模型需要支持工具调用。
 4. 指定已安装的 SolidWorks MCP Python 解释器和 `mcp-server/server.py`，点击「连接 / 重连 MCP」。
@@ -17,3 +17,5 @@ API 版与 Codex 版使用同一个 Rust / Tauri 程序，区别是启动入口�
 API 调用使用所配置服务商的账户与额度。模型请求和摘要会发送相关项目上下文；工具执行成功与机械验收分别记录。原型阶段只用于外形与尺寸检查。
 
 完整说明与更新：[项目 README](https://github.com/haku-nomisugiru/autorobomaster#readme)。
+
+手机控制功能见随包的《手机控制台.md》。

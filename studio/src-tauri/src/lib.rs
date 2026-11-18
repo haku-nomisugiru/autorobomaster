@@ -7,6 +7,7 @@ mod interface_fonts;
 #[cfg(test)]
 mod integration_tests;
 mod mcp;
+mod mobile;
 mod store;
 mod workspace;
 use domain::*;
@@ -75,7 +76,7 @@ fn edit_workspace(
     action: String,
     payload: Value,
 ) -> Result<Snapshot, String> {
-    state.idle()?;
+    let guard = state.begin()?;
     {
         let db = state.db.lock().map_err(|_| "数据锁失败")?;
         let mut p = db.active()?;
@@ -169,6 +170,7 @@ fn edit_workspace(
         }
         db.save_project(&p)?;
     }
+    drop(guard);
     state.snapshot()
 }
 
@@ -245,8 +247,12 @@ async fn send_message(
     app: tauri::AppHandle,
     text: Option<String>,
     choice: Option<String>,
+    question_id: Option<String>,
 ) -> Result<Snapshot, String> {
     let guard = state.begin()?;
+    if let Some(id)=question_id {
+        if state.db.lock().map_err(|_|"数据锁失败")?.active()?.pending.as_ref().map(|d|&d.call_id)!=Some(&id){return Err("问题已处理，请刷新项目".into())}
+    }
     let settings = state
         .db
         .lock()
@@ -535,6 +541,9 @@ pub fn run() {
             };
             let db = store::Store::open(&root).map_err(std::io::Error::other)?;
             recover_interrupted(&db).map_err(std::io::Error::other)?;
+            mobile::initialize(&db).map_err(std::io::Error::other)?;
+            let paired:bool=db.conn.query_row("SELECT EXISTS(SELECT 1 FROM mobile_devices)",[],|r|r.get(0))?;
+            app.manage(mobile::Mobile::default());
             app.manage(AppState {
                 db: Mutex::new(db),
                 mcp: tokio::sync::Mutex::new(None),
@@ -542,10 +551,19 @@ pub fn run() {
                 cancel: AtomicBool::new(false),
                 cancel_notify: tokio::sync::Notify::new(),
             });
+            if paired {
+                let handle=app.handle().clone();
+                tauri::async_runtime::spawn(async move {if let Err(e)=mobile::mobile_enable(handle).await {eprintln!("{e}");}});
+            }
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
             bootstrap,
+            mobile::mobile_enable,
+            mobile::mobile_disable,
+            mobile::mobile_ticket,
+            mobile::mobile_admin,
+            mobile::mobile_device,
             interface_fonts::load_interface_font,
             edit_workspace,
             save_settings,
