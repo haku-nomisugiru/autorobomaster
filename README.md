@@ -39,7 +39,7 @@ DSH 可以直接安装此仓库地址：`https://github.com/haku-nomisugiru/auto
 
 ## 手机连接教学
 
-准备一台运行 Studio 0.3.0 的 Windows 电脑和一部 Android 8 或更高版本的手机。电脑负责运行模型与 SolidWorks，手机用于查看同一项目、发消息和点选确认。
+（由于本操作较复杂，建议usb连接手机开启adb调试让电脑agent完成）准备一台运行 Studio 0.3.0 的 Windows 电脑和一部 Android 8 或更高版本的手机。电脑负责运行模型与 SolidWorks，手机用于查看同一项目、发消息和点选确认。
 
 1. **安装两端。** 电脑从上表选择 API 或 Codex 桌面包，完整解压，运行对应的启动脚本。在「设置 → 连接与模型」完成模型连接，打开要远程使用的项目。手机下载安装[安卓控制台 APK](https://github.com/haku-nomisugiru/autorobomaster/releases/download/studio-v0.3.0/RoboMaster-Console-v0.3.0.apk)。
 2. **连接私有网络。** 在电脑与手机上安装 Tailscale，用同一账号登录并开启连接。在 Windows 的 PowerShell 运行下面的命令。如果首次运行提示启用 HTTPS，打开命令给出的授权链接，完成后再次运行。复制输出中以 `https://` 开头的电脑地址。[Tailscale 下载](https://tailscale.com/download) · [Serve 官方说明](https://tailscale.com/docs/features/tailscale-serve)
